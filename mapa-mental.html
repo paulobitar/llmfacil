@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-font-scale="md" data-high-contrast="false" data-reduce-motion="false">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa mental para estudo sobre Inteligência Artificial | O Que a Máquina Não Te Conta</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Barra de acessibilidade compartilhada com o portal -->
+  <div class="a11y-bar" role="region" aria-label="Opções de acessibilidade">
+    <div class="container a11y-bar__inner">
+      <a href="index.html#mapa-mental" class="btn btn--ghost btn--sm" style="min-height:32px; padding:0.2rem 0.65rem;">
+        &#8592; Voltar ao portal do livro
+      </a>
+
+      <div class="a11y-controls" role="group" aria-label="Ajustes de leitura">
+        <button type="button" id="btn-font-dec" class="a11y-btn" aria-label="Diminuir tamanho do texto">A-</button>
+        <button type="button" id="btn-font-reset" class="a11y-btn" aria-label="Tamanho padrão do texto">A</button>
+        <button type="button" id="btn-font-inc" class="a11y-btn" aria-label="Aumentar tamanho do texto">A+</button>
+        <button type="button" id="btn-contrast" class="a11y-btn" aria-pressed="false">Alto contraste</button>
+        <button type="button" id="btn-motion" class="a11y-btn" aria-pressed="false">Reduzir movimento</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cabeçalho da visão em tela cheia -->
+  <header class="site-header" id="topo">
+    <div class="container site-header__inner">
+      <div>
+        <h1 style="margin:0; font-size:clamp(1.15rem, 2vw, 1.5rem); font-weight:800;">
+          Mapa mental para estudo sobre Inteligência Artificial
+          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:500;">v13</span>
+        </h1>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+        <button type="button" class="btn btn--secondary btn--sm" id="btnAjuda" title="Como funciona o painel">
+          ? Como funciona o painel
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo-principal" class="main-section" style="padding:1.25rem 0;">
+    <div class="container">
+      <div class="mm-intro-bar">
+        <p><b>Mapa.</b> Cada nó é um conceito e as linhas mostram as ligações. Clique para ler a definição acima do mapa.</p>
+        <p><b>Foco.</b> O clique traz o conceito ao centro com os relacionados. Arraste os nós; <b>Voltar</b> e <b>Limpar</b> refazem o caminho.</p>
+        <p><b>Trilhas.</b> Conduzem os conceitos em ordem temática, com as setas ou PageUp/PageDown. O resto está em <b>Como funciona o painel</b>.</p>
+      </div>
+
+      <div class="mm-dashboard">
+        <aside class="mm-panel mm-side-panel" aria-label="Controles e filtros do mapa mental">
+          <div class="mm-nivel-box" style="--tc:var(--mm-violet)">
+            <div class="mm-nivel-titulo">Abrangência</div>
+            <div class="mm-nivel-btns" id="escopoBtns" role="group" aria-label="Abrangência de termos">
+              <button type="button" class="lvl active" data-e="e" aria-pressed="true">Essencial</button>
+              <button type="button" class="lvl" data-e="p" aria-pressed="false">Ampliado</button>
+              <button type="button" class="lvl" data-e="c" aria-pressed="false">Completo</button>
+            </div>
+          </div>
+
+          <div class="mm-nivel-box" style="--tc:var(--mm-gold)">
+            <div class="mm-nivel-titulo">Linguagem</div>
+            <div class="mm-nivel-btns" id="nivelBtns" role="group" aria-label="Nível de linguagem">
+              <button type="button" class="lvl active" data-n="b" aria-pressed="true">Objetivo</button>
+              <button type="button" class="lvl" data-n="m" aria-pressed="false">Aplicado</button>
+              <button type="button" class="lvl" data-n="a" aria-pressed="false">Técnico</button>
+            </div>
+          </div>
+
+          <div class="mm-nivel-box" style="--tc:var(--mm-cyan)">
+            <div class="mm-nivel-titulo">Trilhas de aprendizado</div>
+            <div class="mm-trilha-lista" id="trilhaLista"></div>
+          </div>
+
+          <div class="mm-search-wrap">
+            <label class="mm-search-label" for="searchTerm">Busca</label>
+            <input type="search" class="form-input" id="searchTerm" placeholder="Buscar termo..." autocomplete="off" />
+          </div>
+
+          <div class="mm-layers" id="layers"></div>
+        </aside>
+
+        <div class="mm-panel mm-map-panel">
+          <div class="mm-map-tools">
+            <div class="mm-map-tools__group">
+              <button type="button" class="flat" id="btnVoltar" disabled>&#8592; Voltar</button>
+              <button type="button" class="flat" id="btnLimparMapa" title="Volta à grade e apaga as marcas de visita">Limpar</button>
+            </div>
+            <span id="trilhaCtl" class="mm-map-tools__group" style="display:none">
+              <button type="button" class="flat" id="btnTrilhaAnt">‹ Anterior</button>
+              <span id="trilhaInfo" aria-live="polite"></span>
+              <button type="button" class="flat" id="btnTrilhaProx">Próximo ›</button>
+              <button type="button" class="flat" id="btnSairTrilha">Sair da trilha</button>
+            </span>
+          </div>
+
+          <div class="conceptBar" id="detail" aria-live="polite">
+            <div class="head"><h3>Selecione um conceito</h3><span class="en">mapa de estudo</span></div>
+            <div class="tabContent">Clique em qualquer nó do mapa para abrir aqui a definição completa do conceito, conforme o material de referência.</div>
+          </div>
+
+          <div class="neuralMap" id="neuralMap" style="height:560px;" role="region" aria-label="Grafo interativo de conceitos de Inteligência Artificial">
+            <svg id="links" aria-hidden="true"></svg>
+            <div class="hint">clique: foco no conceito · clique no central: visão geral</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mm-credit">
+        Idealização e curadoria: <b>César Nogueira</b>. Código desenvolvido com apoio de IA. · v13 · agosto de 2026
+      </p>
+    </div>
+  </main>
+
+  <div class="modalBg" id="ajudaBg" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="ajudaTit">
+      <div class="modalHead">
+        <h2 id="ajudaTit">Como funciona o painel<span>Perguntas frequentes sobre a navegação, os controles e o conteúdo</span></h2>
+        <button type="button" class="flat" id="btnFecharAjuda">Fechar &#10005;</button>
+      </div>
+      <div class="modalBody">
+        <div class="faqCols">
+          <details class="faq" open><summary>Para que serve este painel?</summary>
+          <p>Para estudar vocabulário de inteligência artificial vendo os conceitos em relação, e não em lista. Cada nó é um termo, cada linha é uma ligação declarada entre dois termos. O mesmo arquivo funciona como material de consulta individual e como apoio de exposição em sala.</p></details>
+
+          <details class="faq"><summary>Como leio a definição de um conceito?</summary>
+          <p>Clique no nó dentro do mapa ou no termo listado à esquerda. A definição abre no painel horizontal, acima do mapa. Os botões no rodapé desse painel levam diretamente aos conceitos vizinhos.</p></details>
+
+          <details class="faq"><summary>O que faz o menu <b>Abrangência</b>?</summary>
+          <p>Controla quantos conceitos ficam visíveis. <b>Essencial</b> mostra os quinze termos indispensáveis; <b>Ampliado</b> acrescenta um segundo bloco, e <b>Completo</b> exibe o vocabulário inteiro. Reduzir a abrangência não apaga nada: os termos ocultos voltam quando você amplia de novo.</p></details>
+
+          <details class="faq"><summary>O que faz o menu <b>Linguagem</b>?</summary>
+          <p>Troca o registro do texto exibido, sem trocar o conceito. <b>Objetivo</b> traz a formulação curta e direta; <b>Aplicado</b> traz o mesmo conteúdo com exemplos de uso e implicações de rotina; <b>Técnico</b> traz o verbete extenso, com autores, datas e ressalvas. Quando um termo não possui verbete técnico, o painel avisa e mostra a definição resumida.</p></details>
+
+          <details class="faq"><summary>Como funcionam as <b>trilhas de aprendizado</b>?</summary>
+          <p>Cada trilha percorre um conjunto de conceitos em ordem temática. Ao iniciar uma trilha, a abrangência passa automaticamente para <b>Completo</b>, porque a sequência pode incluir termos fora do recorte anterior. Ao sair, o recorte que você havia escolhido é restaurado.</p></details>
+
+          <details class="faq"><summary>Dá para usar o painel numa apresentação?</summary>
+          <p>Sim, e as trilhas foram feitas para isso. Com uma trilha ativa, as setas do teclado, as teclas PageUp e PageDown e os passadores de slides mais comuns avançam e retrocedem os conceitos. <b>Esc</b> encerra a trilha. Ao chegar ao último conceito, o avanço leva à trilha seguinte.</p></details>
+
+          <details class="faq"><summary>Posso mover os nós? A posição fica guardada?</summary>
+          <p>Arraste qualquer nó para onde quiser. A posição escolhida vale enquanto a página estiver aberta e tem prioridade sobre a grade automática. <b>Limpar</b> devolve tudo ao arranjo original, e recarregar a página também.</p></details>
+
+          <details class="faq"><summary>O que significam as cores?</summary>
+          <p>Cada camada temática tem uma cor, repetida no título da lista lateral e na borda dos nós. Fundamentos e Aplicações aparecem em ciano, Modelos em violeta, Arquitetura em verde, Uso em dourado, Riscos em rosa e Limitações em laranja.</p></details>
+
+          <details class="faq"><summary>O que é o visto verde nos nós e nos termos?</summary>
+          <p>Marca os conceitos já abertos nesta sessão, para você enxergar o que ainda não visitou. É um registro temporário: <b>Limpar</b> apaga as marcas, e recarregar a página também.</p></details>
+
+          <details class="faq"><summary>Para que servem as abas do painel de conceito?</summary>
+          <p><b>Definição</b> traz o texto no registro escolhido em Linguagem. <b>Risco na prática</b>, presente em parte dos termos, aponta o erro típico de quem usa aquele recurso sem conhecer seu limite. <b>Relações mais próximas</b> lista os conceitos ligados àquele.</p></details>
+
+          <details class="faq"><summary>A busca procura em quê?</summary>
+          <p>No nome em português, no termo em inglês e no texto da definição resumida, sempre dentro da abrangência ativa. Se um termo não aparecer, verifique se a abrangência está em Essencial ou Ampliado antes de concluir que ele não existe no mapa.</p></details>
+
+          <details class="faq"><summary>Por que alguns botões de relação aparecem apagados?</summary>
+          <p>Porque o conceito relacionado está fora da abrangência ativa. Passe para <b>Completo</b> e ele volta a ser clicável.</p></details>
+
+          <details class="faq"><summary>O que fazem <b>Voltar</b> e <b>Limpar</b>?</summary>
+          <p><b>Voltar</b> retoma o conceito aberto anteriormente, refazendo o caminho da leitura. <b>Limpar</b> retorna à visão geral, apaga as marcas de visita e desfaz as posições arrastadas.</p></details>
+
+          <details class="faq"><summary>Os dados saem do meu computador?</summary>
+          <p>O arquivo é uma página autônoma: todo o conteúdo está nele, e a página não faz nenhuma requisição de rede nem grava nada no navegador. Se você abrir o arquivo a partir do disco, nada trafega. Se ele estiver hospedado num endereço na internet, o servidor que o entrega registra o acesso ao arquivo, como faria com qualquer página, mas o que você faz depois dentro do painel continua sem sair da sua máquina. Como nada é gravado, o progresso se perde ao fechar a página.</p></details>
+        </div>
+        <p class="faqNota">O conteúdo dos verbetes acompanha o material de referência do curso e não substitui a consulta às fontes primárias. Datas, números e citações saídos de qualquer sistema de IA pedem conferência antes de entrar em documento oficial.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Controles de acessibilidade na visualização em tela cheia
+    (function () {
+      const html = document.documentElement;
+      const scales = ["sm", "md", "lg", "xl"];
+      let currentScaleIdx = 1;
+      const btnContrast = document.getElementById("btn-contrast");
+      const btnMotion = document.getElementById("btn-motion");
+
+      try {
+        const savedContrast = localStorage.getItem("emag_contrast");
+        const savedScale = localStorage.getItem("emag_scale");
+        const savedMotion = localStorage.getItem("emag_motion");
+        if (savedContrast === "true") {
+          html.setAttribute("data-high-contrast", "true");
+          btnContrast.setAttribute("aria-pressed", "true");
+        }
+        if (savedScale && scales.includes(savedScale)) {
+          currentScaleIdx = scales.indexOf(savedScale);
+          html.setAttribute("data-font-scale", savedScale);
+        }
+        if (savedMotion === "true") {
+          html.setAttribute("data-reduce-motion", "true");
+          btnMotion.setAttribute("aria-pressed", "true");
+        }
+      } catch (_) {}
+
+      document.getElementById("btn-font-dec").addEventListener("click", () => {
+        if (currentScaleIdx > 0) {
+          currentScaleIdx--;
+          html.setAttribute("data-font-scale", scales[currentScaleIdx]);
+          try { localStorage.setItem("emag_scale", scales[currentScaleIdx]); } catch (_) {}
+        }
+      });
+      document.getElementById("btn-font-reset").addEventListener("click", () => {
+        currentScaleIdx = 1;
+        html.setAttribute("data-font-scale", "md");
+        try { localStorage.setItem("emag_scale", "md"); } catch (_) {}
+      });
+      document.getElementById("btn-font-inc").addEventListener("click", () => {
+        if (currentScaleIdx < scales.length - 1) {
+          currentScaleIdx++;
+          html.setAttribute("data-font-scale", scales[currentScaleIdx]);
+          try { localStorage.setItem("emag_scale", scales[currentScaleIdx]); } catch (_) {}
+        }
+      });
+      btnContrast.addEventListener("click", () => {
+        const next = html.getAttribute("data-high-contrast") !== "true";
+        html.setAttribute("data-high-contrast", String(next));
+        btnContrast.setAttribute("aria-pressed", String(next));
+        try { localStorage.setItem("emag_contrast", String(next)); } catch (_) {}
+      });
+      btnMotion.addEventListener("click", () => {
+        const next = html.getAttribute("data-reduce-motion") !== "true";
+        html.setAttribute("data-reduce-motion", String(next));
+        btnMotion.setAttribute("aria-pressed", String(next));
+        try { localStorage.setItem("emag_motion", String(next)); } catch (_) {}
+      });
+    })();
+  </script>
+  <script src="data/mindmap.js"></script>
+</body>
+</html>
