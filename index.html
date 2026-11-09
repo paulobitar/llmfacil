@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-font-scale="md" data-high-contrast="false" data-reduce-motion="false">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O Que a Máquina Não Te Conta | Experiências e Ferramentas</title>
+  <meta name="description" content="Entenda a inteligência artificial e use melhor no dia a dia. Experimentos didáticos, ferramentas práticas e as 100 palavras do livro O Que a Máquina Não Te Conta." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Região para anúncios curtos em leitores de tela -->
+  <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Barra de acessibilidade simplificada -->
+  <div class="a11y-bar" role="region" aria-label="Opções de acessibilidade e atalhos">
+    <div class="container a11y-bar__inner">
+      <ul class="a11y-shortcuts" aria-label="Atalhos de salto">
+        <li>
+          <a href="#conteudo-principal" accesskey="1">
+            Conteúdo <kbd class="a11y-key">Alt+1</kbd>
+          </a>
+        </li>
+        <li>
+          <a href="#menu-principal" accesskey="2">
+            Navegação <kbd class="a11y-key">Alt+2</kbd>
+          </a>
+        </li>
+        <li>
+          <a href="#busca-palavras" accesskey="3">
+            Busca <kbd class="a11y-key">Alt+3</kbd>
+          </a>
+        </li>
+        <li>
+          <a href="#rodape" accesskey="4">
+            Rodapé <kbd class="a11y-key">Alt+4</kbd>
+          </a>
+        </li>
+      </ul>
+
+      <div class="a11y-controls" role="group" aria-label="Ajustes de leitura">
+        <button type="button" id="btn-font-dec" class="a11y-btn" aria-label="Diminuir tamanho da fonte">
+          A-
+        </button>
+        <button type="button" id="btn-font-reset" class="a11y-btn" aria-label="Tamanho padrão da fonte">
+          A
+        </button>
+        <button type="button" id="btn-font-inc" class="a11y-btn" aria-label="Aumentar tamanho da fonte">
+          A+
+        </button>
+        <button type="button" id="btn-contrast" class="a11y-btn" aria-pressed="false">
+          Alto contraste
+        </button>
+        <button type="button" id="btn-motion" class="a11y-btn" aria-pressed="false">
+          Reduzir movimento
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cabeçalho principal -->
+  <header class="site-header" id="topo">
+    <div class="container site-header__inner">
+      <a href="#topo" class="brand-logo" aria-label="Início - O Que a Máquina Não Te Conta (llmfacil.com.br)">
+        <span class="brand-logo__domain">llmfacil.com.br</span>
+        <span class="brand-logo__book">O Que a Máquina Não Te Conta</span>
+      </a>
+
+      <nav id="menu-principal" class="main-nav" aria-label="Navegação principal">
+        <ul class="main-nav__list">
+          <li>
+            <a href="#entender-ia" class="nav-link" data-nav-section="entender-ia">
+              Entender a IA
+            </a>
+          </li>
+          <li>
+            <a href="#usar-ferramentas" class="nav-link" data-nav-section="usar-ferramentas">
+              Usar ferramentas
+            </a>
+          </li>
+          <li>
+            <a href="#consultar-palavras" class="nav-link" data-nav-section="consultar-palavras">
+              Consultar palavras
+            </a>
+          </li>
+          <li>
+            <a href="#mapa-mental" class="nav-link nav-link--subtle" data-nav-section="mapa-mental">
+              Mapa mental
+            </a>
+          </li>
+          <li>
+            <a href="#sete-armadilhas" class="nav-link nav-link--subtle" data-nav-section="sete-armadilhas">
+              7 armadilhas
+            </a>
+          </li>
+          <li>
+            <a href="#links-uteis" class="nav-link nav-link--subtle" data-nav-section="links-uteis">
+              Links úteis
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo-principal" tabindex="-1">
+
+    <!-- 1. ABERTURA SIMPLIFICADA -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__intro">
+          <p class="hero__eyebrow">Portal complementar do livro</p>
+          <h1 id="hero-title" class="cover-title">
+            <span class="cover-title__line-white">O Que a Máquina</span>
+            <span class="cover-title__line-nao">Não</span>
+            <span class="cover-title__line-white">Te Conta</span>
+          </h1>
+
+          <p class="hero__lead">
+            <strong>Entenda a IA e use melhor no dia a dia.</strong>
+          </p>
+          <p class="hero__desc">
+            Experimentos rápidos e ferramentas práticas que acompanham o livro <em>100 palavras para usar inteligência artificial sem ser enganado por ela</em>.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#entender-ia" class="btn btn--primary">
+              Começar um experimento
+            </a>
+            <a href="#consultar-palavras" class="btn btn--secondary">
+              Consultar as 100 palavras
+            </a>
+          </div>
+        </div>
+
+        <!-- Exemplo interativo da capa como apoio visual discreto -->
+        <div class="cover-card" role="region" aria-labelledby="cover-sim-heading">
+          <div class="cover-card__header">
+            <h2 id="cover-sim-heading" class="cover-card__title">
+              Exemplo da capa: como a máquina completa uma frase
+            </h2>
+            <p class="sim-disclaimer">
+              Simulação didática. Os valores são ilustrativos e não medem a precisão de uma IA.
+            </p>
+          </div>
+
+          <div class="cover-flow" aria-label="Esquema ilustrativo de continuação da frase A IA sempre">
+            <div class="cover-flow__inputs" aria-hidden="true">
+              <span class="token-node">A</span>
+              <span class="token-arrow">→</span>
+              <span class="token-node">IA</span>
+              <span class="token-arrow">→</span>
+              <span class="token-node">sempre</span>
+              <span class="token-arrow">→</span>
+            </div>
+
+            <div class="cover-flow__branches" role="group" aria-label="Continuações ilustrativas para a frase A IA sempre">
+              <button type="button" class="branch-btn is-selected" data-branch="acerta" aria-pressed="true">
+                <span>acerta.</span>
+                <span class="branch-btn__pct">55%</span>
+              </button>
+              <button type="button" class="branch-btn branch-btn--danger" data-branch="inventa" aria-pressed="false">
+                <span>inventa. (alucinação)</span>
+                <span class="branch-btn__pct">18%</span>
+              </button>
+              <button type="button" class="branch-btn" data-branch="surpreende" aria-pressed="false">
+                <span>surpreende.</span>
+                <span class="branch-btn__pct">15%</span>
+              </button>
+              <button type="button" class="branch-btn" data-branch="confunde" aria-pressed="false">
+                <span>confunde.</span>
+                <span class="branch-btn__pct">12%</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="cover-branch-feedback" class="cover-card__feedback">
+            <p class="cover-card__feedback-title">
+              <strong>Continuação selecionada: “A IA sempre acerta.” (55% neste exemplo)</strong>
+            </p>
+            <p class="cover-card__feedback-text">
+              A porcentagem indica apenas a chance ilustrativa de essa palavra continuar a frase, e não a certeza de que a afirmação seja verdadeira.
+            </p>
+          </div>
+
+          <div class="cover-card__footer">
+            <button type="button" id="btn-cover-roll" class="btn btn--secondary btn--sm">
+              Sortear continuação neste exemplo
+            </button>
+            <span id="cover-roll-counter" class="cover-card__counter" aria-live="polite">
+              Nenhum sorteio realizado ainda.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEÇÃO 1: ENTENDER A IA
+         ====================================================================== -->
+    <section id="entender-ia" class="main-section" aria-labelledby="sec-entender-heading">
+      <!-- Âncora de compatibilidade com links anteriores -->
+      <div id="secao-conceitos" class="anchor-alias" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Experimentos interativos</p>
+          <h2 id="sec-entender-heading" class="section-title">Entender a IA</h2>
+          <p class="section-desc">
+            Veja passo a passo como um modelo de linguagem sorteia palavras, divide textos, relaciona o contexto e por que consultar fontes externas reduz invenções.
+          </p>
+        </div>
+
+        <!-- Abas acessíveis (apenas a aba ativa recebe tabindex="0") -->
+        <div class="tools-tabs" role="tablist" aria-label="Experimentos para entender a IA">
+          <button
+            type="button"
+            role="tab"
+            id="tab-predicao"
+            aria-selected="true"
+            aria-controls="panel-predicao"
+            tabindex="0"
+            class="tool-tab-btn"
+            data-section="sec1"
+            data-target="panel-predicao"
+            data-tool-slug="tool-predicao"
+          >
+            Por que a IA muda de resposta?
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-tokens"
+            aria-selected="false"
+            aria-controls="panel-tokens"
+            tabindex="-1"
+            class="tool-tab-btn"
+            data-section="sec1"
+            data-target="panel-tokens"
+            data-tool-slug="tool-tokens"
+          >
+            Como a IA divide seu texto?
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-atencao"
+            aria-selected="false"
+            aria-controls="panel-atencao"
+            tabindex="-1"
+            class="tool-tab-btn"
+            data-section="sec1"
+            data-target="panel-atencao"
+            data-tool-slug="tool-atencao"
+          >
+            Como o contexto influencia a resposta?
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-armadilhas"
+            aria-selected="false"
+            aria-controls="panel-armadilhas"
+            tabindex="-1"
+            class="tool-tab-btn"
+            data-section="sec1"
+            data-target="panel-armadilhas"
+            data-tool-slug="tool-armadilhas"
+          >
+            Como as fontes ajudam a conferir uma resposta?
+          </button>
+        </div>
+
+        <!-- PAINEL 1: POR QUE A IA MUDA DE RESPOSTA? -->
+        <div id="panel-predicao" role="tabpanel" aria-labelledby="tab-predicao" class="tool-panel">
+          <div class="tool-panel__header">
+            <div>
+              <h3 class="tool-panel__title">Por que a IA muda de resposta?</h3>
+              <p class="tool-panel__subtitle">
+                Termos do livro: <strong>Previsão da próxima palavra</strong>, <strong>Probabilidade</strong>, <strong>Temperatura</strong>, <strong>Amostragem</strong>, <strong>Determinístico e estocástico</strong> e <strong>Semente</strong> (Capítulos 2 e 3; Campo 3).
+              </p>
+            </div>
+            <button type="button" class="btn btn--ghost btn--sm" data-copy-link="#tool-predicao">
+              Copiar link deste experimento
+            </button>
+          </div>
+
+          <p class="sim-disclaimer sim-disclaimer--banner">
+            Simulação didática. Os valores são ilustrativos e não medem a precisão de uma IA. A probabilidade de uma palavra continuar o texto não equivale à probabilidade de a afirmação ser verdadeira.
+          </p>
+
+          <div class="tool-two-col">
+            <div class="control-box">
+              <div class="form-group">
+                <label for="pred-scenario" class="form-label">1. Escolha uma frase de partida:</label>
+                <select id="pred-scenario" class="form-select">
+                  <option value="lei">Citação de lei: “Para comprovar essa tese, a Lei Federal nº...”</option>
+                  <option value="ia">Frase da capa: “Nos relatórios do trabalho, a IA sempre...”</option>
+                  <option value="vies">Associação de profissão: “A pessoa escolhida para dirigir a engenharia foi...”</option>
+                  <option value="bajula">Pedido de opinião: “Sua ideia de investir toda a reserva em um único ativo é...”</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="pred-temp" class="form-label">
+                  2. Ajuste a variação (Temperatura): <strong id="pred-temp-val" class="highlight-value">0.3 (Mais previsível)</strong>
+                </label>
+                <input
+                  type="range"
+                  id="pred-temp"
+                  class="range-slider"
+                  min="0"
+                  max="1.5"
+                  step="0.1"
+                  value="0.3"
+                  aria-describedby="pred-temp-hint"
+                />
+                <span id="pred-temp-hint" class="form-hint">
+                  Em 0.0, a simulação escolhe sempre a opção mais provável da lista (comportamento determinístico). Em valores altos, opções menos frequentes ganham chance no sorteio (comportamento estocástico), aumentando a variedade e também o risco de invenção.
+                </span>
+              </div>
+
+              <div class="form-group">
+                <label for="pred-seed" class="form-label">3. Número do sorteio (Semente / Seed):</label>
+                <div class="input-inline">
+                  <input type="number" id="pred-seed" class="form-input" value="42" min="1" max="9999" aria-describedby="pred-seed-hint" />
+                  <button type="button" id="btn-new-seed" class="btn btn--secondary">
+                    Trocar número
+                  </button>
+                </div>
+                <span id="pred-seed-hint" class="form-hint">
+                  Mantendo a mesma frase, a mesma temperatura e a mesma semente, o sorteio repete o mesmo resultado.
+                </span>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" id="btn-run-prediction" class="btn btn--primary">
+                  Sortear outra continuação
+                </button>
+              </div>
+            </div>
+
+            <div class="control-box">
+              <h4 class="box-heading">Opções de continuação nesta simulação:</h4>
+              <p id="pred-context-display" class="sentence-preview"></p>
+
+              <div id="pred-bars" class="prob-list" aria-label="Lista de continuações ilustrativas e suas porcentagens">
+                <!-- Gerado via JS -->
+              </div>
+
+              <div id="pred-result-box" class="info-callout">
+                <!-- Explicação gerada via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAINEL 2: COMO A IA DIVIDE SEU TEXTO? -->
+        <div id="panel-tokens" role="tabpanel" aria-labelledby="tab-tokens" class="tool-panel" hidden>
+          <div class="tool-panel__header">
+            <div>
+              <h3 class="tool-panel__title">Como a IA divide seu texto?</h3>
+              <p class="tool-panel__subtitle">
+                Termos do livro: <strong>Token</strong>, <strong>Tokenização</strong>, <strong>Janela de contexto</strong> e <strong>Custo por token</strong> (Campos 2, 3 e 7).
+              </p>
+            </div>
+            <button type="button" class="btn btn--ghost btn--sm" data-copy-link="#tool-tokens">
+              Copiar link deste experimento
+            </button>
+          </div>
+
+          <p class="sim-disclaimer sim-disclaimer--banner">
+            Simulação didática. Os valores são ilustrativos e não medem a precisão de uma IA. A divisão abaixo usa uma regra simplificada para mostrar como palavras são quebradas em pedaços (tokens) e não representa a contagem exata nem a cobrança de um modelo comercial.
+          </p>
+
+          <div class="tool-two-col">
+            <div class="control-box">
+              <div class="form-group">
+                <label for="token-preset" class="form-label">Escolha um exemplo ou escreva abaixo:</label>
+                <select id="token-preset" class="form-select">
+                  <option value="pt_en">Exemplo 1: Frase em português comparada ao inglês</option>
+                  <option value="soletrar">Exemplo 2: Por que a IA pode errar ao contar letras?</option>
+                  <option value="custom">Escrever meu próprio texto</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="token-input" class="form-label">Texto em português:</label>
+                <textarea id="token-input" class="form-textarea">Quem conversa com uma inteligência artificial sem saber como ela funciona tende a confundir uma resposta bem escrita com uma resposta verdadeira.</textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="token-en-compare" class="form-label">Frase correspondente em inglês (para comparação ilustrativa):</label>
+                <textarea id="token-en-compare" class="form-textarea form-textarea--short">Anyone who talks to an artificial intelligence without knowing how it works tends to confuse a well-written answer with a true answer.</textarea>
+              </div>
+            </div>
+
+            <div class="control-box">
+              <h4 class="box-heading">Divisão ilustrativa do texto em português:</h4>
+              <p class="form-hint" style="margin-top:0; margin-bottom:0.65rem;">
+                Cada bloco representa um pedaço de texto (token). Palavras curtas costumam ficar inteiras; palavras maiores são divididas em partes.
+              </p>
+              <div id="token-visual-stream" class="token-stream" aria-label="Divisão ilustrativa do texto em blocos"></div>
+
+              <table class="accessible-table" aria-label="Comparação ilustrativa entre o texto em português e em inglês">
+                <thead>
+                  <tr>
+                    <th scope="col">Medida ilustrativa</th>
+                    <th scope="col">Texto em português</th>
+                    <th scope="col">Texto em inglês</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Palavras separadas por espaço</td>
+                    <td id="stat-pt-words">0</td>
+                    <td id="stat-en-words">0</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Pedaços (tokens ilustrativos)</strong></td>
+                    <td id="stat-pt-tokens" class="table-highlight">0</td>
+                    <td id="stat-en-tokens">0</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="info-callout">
+                <strong>O que isso ajuda a entender:</strong>
+                <ul class="compact-list">
+                  <li>Como os modelos aprenderam com muito mais textos em inglês, palavras em português costumam ser divididas em mais pedaços. Isso ocupa mais rápido a memória da conversa (<strong>janela de contexto</strong>) e pode encarecer o uso profissional cobrado por <strong>token</strong>.</li>
+                  <li>Como a máquina trabalha com esses pedaços e não com letras isoladas, ela pode errar quando pedimos para soletrar ou contar quantas letras existem em uma palavra.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAINEL 3: COMO O CONTEXTO INFLUENCIA A RESPOSTA? -->
+        <div id="panel-atencao" role="tabpanel" aria-labelledby="tab-atencao" class="tool-panel" hidden>
+          <div class="tool-panel__header">
+            <div>
+              <h3 class="tool-panel__title">Como o contexto influencia a resposta?</h3>
+              <p class="tool-panel__subtitle">
+                Termos do livro: <strong>Transformer</strong>, <strong>Mecanismo de atenção</strong>, <strong>Embedding</strong> e <strong>Vetor</strong> (Capítulo 3.2; Campo 2).
+              </p>
+            </div>
+            <button type="button" class="btn btn--ghost btn--sm" data-copy-link="#tool-atencao">
+              Copiar link deste experimento
+            </button>
+          </div>
+
+          <p class="sim-disclaimer sim-disclaimer--banner">
+            Simulação didática. Os valores são ilustrativos e não medem a precisão de uma IA.
+          </p>
+
+          <div class="tool-two-col">
+            <div class="control-box">
+              <div class="form-group">
+                <label for="attn-example" class="form-label">1. Escolha uma frase citada no livro:</label>
+                <select id="attn-example" class="form-select">
+                  <option value="praca">“Sentei no banco da praça para descansar”</option>
+                  <option value="dinheiro">“Fui ao banco sacar dinheiro para pagar”</option>
+                  <option value="joao">“João colocou o dinheiro na conta porque ele precisava pagar”</option>
+                </select>
+              </div>
+
+              <p class="form-label" style="margin-bottom:0.4rem;">
+                2. Selecione uma palavra da frase para inspecionar as conexões de contexto:
+              </p>
+              <div id="attn-words-container" class="attention-sentence" role="group" aria-label="Palavras da frase"></div>
+
+              <div id="attn-explanation" class="info-callout"></div>
+            </div>
+
+            <div class="control-box">
+              <h4 class="box-heading">Relevância ilustrativa entre palavras (Mecanismo de atenção):</h4>
+              <div id="attn-table-wrapper"></div>
+
+              <div class="subsection-divider">
+                <h5 class="box-subheading">Como a máquina agrupa palavras parecidas (Embeddings e Vetores):</h5>
+                <p class="form-hint" style="margin-top:0; margin-bottom:0.6rem;">
+                  O modelo converte cada token em uma lista de números (<strong>vetor</strong>). Palavras usadas em contextos semelhantes recebem números próximos (exemplo ilustrativo com 3 números):
+                </p>
+                <table class="accessible-table" aria-label="Exemplo ilustrativo de vetores numéricos">
+                  <thead>
+                    <tr>
+                      <th scope="col">Palavra</th>
+                      <th scope="col">Vetor ilustrativo</th>
+                      <th scope="col">Relação de proximidade</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Rei</strong></td>
+                      <td><code>[ 0.91, 0.84, -0.12 ]</code></td>
+                      <td>Próximo de <em>Rainha</em></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Rainha</strong></td>
+                      <td><code>[ 0.88, 0.79, -0.05 ]</code></td>
+                      <td>Próximo de <em>Rei</em></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Contabilidade</strong></td>
+                      <td><code>[-0.74, 0.11, 0.93 ]</code></td>
+                      <td>Distante de <em>Rei</em> e <em>Rainha</em></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAINEL 4: COMO AS FONTES AJUDAM A CONFERIR UMA RESPOSTA? -->
+        <div id="panel-armadilhas" role="tabpanel" aria-labelledby="tab-armadilhas" class="tool-panel" hidden>
+          <div class="tool-panel__header">
+            <div>
+              <h3 class="tool-panel__title">Como as fontes ajudam a conferir uma resposta?</h3>
+              <p class="tool-panel__subtitle">
+                Termos do livro: <strong>Alucinação</strong>, <strong>Confabulação</strong>, <strong>Corte de conhecimento</strong>, <strong>RAG</strong>, <strong>Base de conhecimento</strong>, <strong>RLHF</strong>, <strong>Injeção de prompt</strong> e <strong>Humano no circuito</strong> (Campos 4, 5, 6 e 9).
+              </p>
+            </div>
+            <button type="button" class="btn btn--ghost btn--sm" data-copy-link="#tool-armadilhas">
+              Copiar link deste experimento
+            </button>
+          </div>
+
+          <p class="sim-disclaimer sim-disclaimer--banner">
+            Simulação didática. Os valores são ilustrativos e não medem a precisão de uma IA. Os cenários abaixo exemplificam casos discutidos no livro.
+          </p>
+
+          <div class="tool-two-col">
+            <div class="control-box">
+              <div class="form-group">
+                <label for="trap-sim-case" class="form-label">1. Escolha uma situação do dia a dia:</label>
+                <select id="trap-sim-case" class="form-select">
+                  <option value="corte">Fato recente: perguntar sobre uma lei ou notícia atual</option>
+                  <option value="alucinacao">Referência específica: pedir uma citação acadêmica ou jurídica</option>
+                  <option value="rlhf">Concordância fácil: pedir opinião sobre uma ideia fraca</option>
+                  <option value="injecao">Documento externo: resumir um arquivo com instruções ocultas</option>
+                </select>
+              </div>
+
+              <fieldset class="form-fieldset">
+                <legend class="form-label">2. Escolha como a IA vai responder nesta simulação:</legend>
+                <label class="radio-card">
+                  <input type="radio" name="rag-mode" value="puro" checked />
+                  <span>
+                    <strong>Sem fonte externa (apenas memória do treinamento)</strong>
+                    <small class="form-hint">A máquina responde apenas com base nos padrões do seu pré-treinamento.</small>
+                  </span>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="rag-mode" value="rag" />
+                  <span>
+                    <strong>Com documentos de referência (RAG) e supervisão</strong>
+                    <small class="form-hint">A máquina consulta uma base de documentos fornecida e aplica regras de revisão.</small>
+                  </span>
+                </label>
+              </fieldset>
+            </div>
+
+            <div class="control-box" id="trap-sim-output">
+              <!-- Preenchido via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEÇÃO 2: USAR FERRAMENTAS
+         ====================================================================== -->
+    <section id="usar-ferramentas" class="main-section" aria-labelledby="sec-ferramentas-heading">
+      <!-- Âncora de compatibilidade -->
+      <div id="secao-pratica" class="anchor-alias" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Apoio prático para estudo e trabalho</p>
+          <h2 id="sec-ferramentas-heading" class="section-title">Usar ferramentas</h2>
+          <p class="section-desc">
+            Estruture pedidos mais claros, substitua dados pessoais antes de usar um chat de IA, planeje a conferência de informações importantes e escolha a abordagem adequada para sua tarefa.
+          </p>
+        </div>
+
+        <div class="tools-tabs" role="tablist" aria-label="Ferramentas práticas para o dia a dia">
+          <button
+            type="button"
+            role="tab"
+            id="tab-prompt"
+            aria-selected="true"
+            aria-controls="panel-prompt"
+            tabindex="0"
+            class="tool-tab-btn"
+            data-section="sec2"
+            data-target="panel-prompt"
+            data-tool-slug="tool-prompt"
+          >
+            Montar um pedido para a IA
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-lgpd"
+            aria-selected="false"
+            aria-controls="panel-lgpd"
+            tabindex="-1"
+            class="tool-tab-btn"
+            data-section="sec2"
+            data-target="panel-lgpd"
+            data-tool-slug="tool-lgpd"
+          >
+            Ocultar dados pessoais
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-auditoria"
+            aria-selected="false"
+            aria-controls="panel-auditoria"
+            tabindex="-1"
+            class="tool-tab-btn"
+            data-section="sec2"
+            data-target="panel-auditoria"
+            data-tool-slug="tool-auditoria"
+          >
+            Definir o que precisa ser conferido
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-bussola"
+            aria-selected="false"
+            aria-controls="panel-bussola"
+            tabindex="-1"
+            class="tool-tab-btn"
+            data-section="sec2"
+            data-target="panel-bussola"
+            data-tool-slug="tool-bussola"
+          >
+            Escolher uma abordagem de IA
+          </button>
+        </div>
+
+        <!-- PAINEL 2.1: MONTAR UM PEDIDO PARA A IA -->
+        <div id="panel-prompt" role="tabpanel" aria-labelledby="tab-prompt" class="tool-panel">
+          <div class="tool-panel__header">
+            <div>
+              <h3 class="tool-panel__title">Montar um pedido para a IA</h3>
+              <p class="tool-panel__subtitle">
+                Termos do livro: <strong>Engenharia de prompt</strong>, <strong>Papel ou persona</strong>, <strong>Contexto</strong>, <strong>Instrução</strong>, <strong>Restrição</strong>, <strong>Zero-shot</strong>, <strong>Few-shot</strong> e <strong>Cadeia de pensamento</strong> (Campo 5).
+              </p>
+            </div>
+            <button type="button" class="btn btn--ghost btn--sm" data-copy-link="#tool-prompt">
+              Copiar link desta ferramenta
+            </button>
+          </div>
+
+          <div class="tool-two-col">
+            <div class="control-box">
+              <div class="form-group">
+                <label for="prompt-template" class="form-label">Preencher com um exemplo inicial (opcional):</label>
+                <select id="prompt-template" class="form-select">
+                  <option value="">Escolher exemplo...</option>
+                  <option value="revisao">Revisão crítica de um texto (evitando elogios automáticos)</option>
+                  <option value="rag_manual">Resumo restrito a um documento fornecido</option>
+                  <option value="didatico">Explicação simples para quem não é da área</option>
+                  <option value="email">E-mail profissional sobre mudança de prazo</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="pb-persona" class="form-label">1. Papel ou ponto de vista (Persona):</label>
+                <input type="text" id="pb-persona" class="form-input" placeholder="Ex.: Atue como um revisor técnico cuidadoso..." />
+              </div>
+
+              <div class="form-group">
+                <label for="pb-context" class="form-label">2. Contexto (Qual é a situação e quem vai ler?):</label>
+                <textarea id="pb-context" class="form-textarea form-textarea--short" placeholder="Ex.: Estou preparando um relatório para gestores que não são da área jurídica..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="pb-instruction" class="form-label">3. Tarefa principal (Instrução):</label>
+                <textarea id="pb-instruction" class="form-textarea form-textarea--short" placeholder="Ex.: Analise o texto abaixo, aponte três trechos confusos e sugira uma reescrita..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="pb-constraint" class="form-label">4. Limites de formato e tamanho (Restrição):</label>
+                <input type="text" id="pb-constraint" class="form-input" placeholder="Ex.: Em até 250 palavras, formato de lista, sem jargões..." />
+              </div>
+
+              <div class="form-group">
+                <label for="pb-examples" class="form-label">5. Exemplos do formato esperado (Few-shot — opcional):</label>
+                <textarea id="pb-examples" class="form-textarea form-textarea--short" placeholder="Ex.: Formato desejado: [Trecho original] -> [Sugestão de melhoria]"></textarea>
+              </div>
+
+              <fieldset class="form-fieldset">
+                <legend class="form-label">Instruções adicionais de cautela:</legend>
+                <label class="checkbox-row">
+                  <input type="checkbox" id="pb-anti-hallucination" checked />
+                  <span>Pedir para usar apenas os dados fornecidos e avisar quando não souber</span>
+                </label>
+                <label class="checkbox-row">
+                  <input type="checkbox" id="pb-anti-sycophancy" checked />
+                  <span>Pedir análise crítica em vez de elogios automáticos</span>
+                </label>
+                <label class="checkbox-row">
+                  <input type="checkbox" id="pb-cot" />
+                  <span>Pedir para mostrar o raciocínio por etapas antes da conclusão</span>
+                </label>
+              </fieldset>
+            </div>
+
+            <div class="control-box">
+              <div class="box-header-inline">
+                <label for="pb-output" class="box-heading" style="margin:0;">Pedido montado (você também pode editar antes de copiar):</label>
+                <span id="pb-score-badge" class="status-pill">Campos preenchidos: 0/4</span>
+              </div>
+
+              <textarea id="pb-output" class="form-textarea form-textarea--tall"></textarea>
+
+              <div id="pb-feedback" class="info-callout"></div>
+
+              <div class="form-actions">
+                <button type="button" id="btn-copy-prompt" class="btn btn--primary">
+                  Copiar pedido
+                </button>
+                <button type="button" id="btn-clear-prompt" class="btn btn--ghost">
+                  Limpar campos
+                </button>
+              </div>
+              <p id="pb-copy-status" class="action-feedback" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAINEL 2.2: OCULTAR DADOS PESSOAIS -->
+        <div id="panel-lgpd" role="tabpanel" aria-labelledby="tab-lgpd" class="tool-panel" hidden>
+          <div class="tool-panel__header">
+            <div>
+              <h3 class="tool-panel__title">Ocultar dados pessoais</h3>
+              <p class="tool-panel__subtitle">
+                Termos do livro: <strong>Dados pessoais</strong> e <strong>LGPD</strong> (Capítulo 4.1; Campo 8).
+              </p>
+            </div>
+            <button type="button" class="btn btn--ghost btn--sm" data-copy-link="#tool-lgpd">
+              Copiar link desta ferramenta
+            </button>
+          </div>
+
+          <div class="info-callout" style="margin-top:0; margin-bottom:1.25rem;">
+            <strong>Como esta ferramenta funciona:</strong>
+            <ul class="compact-list">
+              <li><strong>Processamento local:</strong> o texto digitado é processado apenas no seu navegador e não é enviado a servidores por esta página.</li>
+              <li><strong>Padrões procurados automaticamente:</strong> CPF, CNPJ, e-mail, telefone no formato brasileiro, valores em reais (<code>R$</code>) e chaves iniciadas por <code>sk-</code> ou <code>AIza</code>.</li>
+              <li><strong>Limitação importante:</strong> nomes de pessoas, empresas, endereços, números de processos ou detalhes de contexto que identifiquem alguém <strong>não são detectados sozinhos</strong>. Informe nomes específicos no campo abaixo e revise sempre o resultado antes de compartilhar com uma IA.</li>
+            </ul>
+          </div>
+
+          <div class="tool-two-col">
+            <div class="control-box">
+              <div class="form-group">
+                <label for="lgpd-input" class="form-label">1. Texto original:</label>
+                <textarea id="lgpd-input" class="form-textarea" style="min-height:140px;">Prezado Dr. Roberto Almeida (CPF 123.456.789-00), confirmamos que a paciente Maria Clara Souza, telefone (11) 98765-4321 e e-mail maria.souza@empresa.com.br, realizou o pagamento de R$ 14.500,00 referente ao contrato da clínica CNPJ 12.345.678/0001-99. Chave interna: sk-proj-987654321abcdef.</textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="lgpd-custom-names" class="form-label">2. Nomes ou termos adicionais para substituir (separados por vírgula):</label>
+                <input type="text" id="lgpd-custom-names" class="form-input" value="Roberto Almeida, Maria Clara Souza" placeholder="Ex.: Roberto Almeida, Maria Clara Souza, Clínica São Lucas" />
+                <span class="form-hint">Cada termo informado aqui será trocado por marcadores como <code>[PESSOA_1]</code>, <code>[PESSOA_2]</code>.</span>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" id="btn-anonymize" class="btn btn--primary">
+                  Substituir dados no texto
+                </button>
+                <button type="button" id="btn-clear-lgpd" class="btn btn--ghost">
+                  Limpar texto
+                </button>
+              </div>
+            </div>
+
+            <div class="control-box">
+              <div class="form-group">
+                <label for="lgpd-output" class="form-label">3. Texto com dados substituídos:</label>
+                <textarea id="lgpd-output" class="form-textarea" style="min-height:130px; font-family:var(--font-mono);" readonly></textarea>
+              </div>
+
+              <div id="lgpd-report" class="info-callout info-callout--warning">
+                <strong>Texto com dados substituídos.</strong> Revise antes de compartilhar: informações identificáveis podem permanecer.
+              </div>
+
+              <div class="form-actions" style="margin-top:0.75rem;">
+                <button type="button" id="btn-copy-anon" class="btn btn--secondary">
+                  Copiar texto com dados substituídos
+                </button>
+              </div>
+              <p id="lgpd-copy-status" class="action-feedback" role="status" aria-live="polite"></p>
+
+              <!-- Área separada para reverter marcadores sem misturar com o texto oculto -->
+              <div class="subsection-divider">
+                <h4 class="box-subheading">4. Reverter marcadores após receber a resposta da IA (opcional)</h4>
+                <p class="form-hint" style="margin-top:0; margin-bottom:0.6rem;">
+                  Se a IA respondeu usando marcadores como <code>[PESSOA_1]</code> ou <code>[CPF_1]</code>, cole a resposta abaixo para recolocar os dados originais em um campo separado.
+                </p>
+                <div class="form-group">
+                  <label for="lgpd-restore-input" class="form-label">Resposta da IA contendo os marcadores:</label>
+                  <textarea id="lgpd-restore-input" class="form-textarea form-textarea--short" placeholder="Cole aqui a resposta da IA com [PESSOA_1], [CPF_1], [VALOR_1]..."></textarea>
+                </div>
+                <div class="form-actions">
+                  <button type="button" id="btn-restore-lgpd" class="btn btn--secondary">
+                    Mostrar texto restaurado abaixo
+                  </button>
+                </div>
+
+                <div id="lgpd-restored-container" class="restored-box" hidden>
+                  <label for="lgpd-restored-output" class="form-label" style="color:var(--red-accent);">
+                    Texto restaurado com dados originais (uso local — evite colar novamente na IA):
+                  </label>
+                  <textarea id="lgpd-restored-output" class="form-textarea form-textarea--short" readonly></textarea>
+                  <div class="form-actions" style="margin-top:0.5rem;">
+                    <button type="button" id="btn-copy-restored" class="btn btn--ghost btn--sm">
+                      Copiar texto restaurado
+                    </button>
+                  </div>
+                  <p id="lgpd-restore-status" class="action-feedback" role="status" aria-live="polite"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAINEL 2.3: DEFINIR O QUE PRECISA SER CONFERIDO -->
+        <div id="panel-auditoria" role="tabpanel" aria-labelledby="tab-auditoria" class="tool-panel" hidden>
+          <div class="tool-panel__header">
+            <div>
+              <h3 class="tool-panel__title">Definir o que precisa ser conferido</h3>
+              <p class="tool-panel__subtitle">
+                Termos do livro: <strong>Alucinação</strong>, <strong>Direitos autorais</strong>, <strong>Propriedade de conteúdo gerado</strong>, <strong>Transparência</strong> e <strong>Humano no circuito</strong> (Capítulos 4.2 e 4.3; Campos 8 e 9).
+              </p>
+            </div>
+            <button type="button" class="btn btn--ghost btn--sm" data-copy-link="#tool-auditoria">
+              Copiar link desta ferramenta
+            </button>
+          </div>
+
+          <div class="tool-two-col">
+            <div class="control-box">
+              <div class="form-group">
+                <label for="risk-impact" class="form-label">1. Se houver um erro na resposta da IA, qual é a consequência?</label>
+                <select id="risk-impact" class="form-select">
+                  <option value="baixo">Baixa: rascunho pessoal, organização de ideias ou mensagem informal</option>
+                  <option value="medio">Média: apresentação de trabalho, material de aula ou comunicação externa</option>
+                  <option value="alto" selected>Alta: documento jurídico, financeiro, de saúde, acadêmico ou código em produção</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="risk-content" class="form-label">2. A resposta inclui fatos específicos (datas, leis, números, citações ou nomes)?</label>
+                <select id="risk-content" class="form-select">
+                  <option value="sim" selected>Sim — traz dados factuais, fontes ou números</option>
+                  <option value="nao">Não — apenas reorganiza um texto que eu mesmo escrevi</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="risk-context" class="form-label">3. Contexto para modelo de nota de transparência:</label>
+                <select id="risk-context" class="form-select">
+                  <option value="academico">Trabalho acadêmico ou científico</option>
+                  <option value="corporativo">Relatório profissional ou parecer técnico</option>
+                  <option value="editorial">Texto autoral, artigo ou material criativo</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="control-box">
+              <div id="risk-protocol-output"></div>
+
+              <div class="subsection-divider">
+                <label for="transparency-note" class="form-label">
+                  Sugestão de nota informando o uso de IA (edite conforme as regras da sua instituição):
+                </label>
+                <textarea id="transparency-note" class="form-textarea form-textarea--short"></textarea>
+                <div class="form-actions" style="margin-top:0.5rem;">
+                  <button type="button" id="btn-copy-transparency" class="btn btn--secondary btn--sm">
+                    Copiar nota de transparência
+                  </button>
+                </div>
+                <p id="audit-copy-status" class="action-feedback" role="status" aria-live="polite"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAINEL 2.4: ESCOLHER UMA ABORDAGEM DE IA -->
+        <div id="panel-bussola" role="tabpanel" aria-labelledby="tab-bussola" class="tool-panel" hidden>
+          <div class="tool-panel__header">
+            <div>
+              <h3 class="tool-panel__title">Escolher uma abordagem de IA</h3>
+              <p class="tool-panel__subtitle">
+                Termos do livro: <strong>Modelo de raciocínio</strong>, <strong>RAG</strong>, <strong>Parâmetros abertos</strong>, <strong>Agente</strong>, <strong>Copiloto</strong> e <strong>Humano no circuito</strong> (Campos 6, 7 e 9; Capítulo 5.2).
+              </p>
+            </div>
+            <button type="button" class="btn btn--ghost btn--sm" data-copy-link="#tool-bussola">
+              Copiar link desta ferramenta
+            </button>
+          </div>
+
+          <div class="tool-two-col">
+            <div class="control-box">
+              <h4 class="box-heading">Qual tipo de recurso faz mais sentido para sua tarefa?</h4>
+              <div class="form-group">
+                <label for="compass-task" class="form-label">Selecione o que você pretende fazer:</label>
+                <select id="compass-task" class="form-select">
+                  <option value="recente">Consultar fatos recentes, normas atuais ou documentos internos</option>
+                  <option value="sigilo">Analisar documentos confidenciais protegidos por sigilo</option>
+                  <option value="logica">Resolver um problema com várias etapas lógicas ou matemáticas</option>
+                  <option value="redacao">Rascunhar, resumir ou revisar o estilo de um texto próprio</option>
+                  <option value="autonomo">Automatizar tarefas que executam ações externas (Agente)</option>
+                </select>
+              </div>
+
+              <div id="compass-recommendation" class="info-callout"></div>
+            </div>
+
+            <div class="control-box">
+              <h4 class="box-heading">Reflexão de autonomia: “E se a IA saísse do ar amanhã?” (Capítulo 5.2)</h4>
+              <p class="form-hint" style="margin-top:0; margin-bottom:0.75rem;">
+                Marque as afirmações que descrevem seu modo atual de usar a ferramenta:
+              </p>
+
+              <div class="checkbox-group">
+                <label class="checkbox-row">
+                  <input type="checkbox" class="autonomy-check" value="good" checked />
+                  <span>Consigo realizar minha tarefa principal sem a IA, mesmo que leve mais tempo.</span>
+                </label>
+                <label class="checkbox-row">
+                  <input type="checkbox" class="autonomy-check" value="good" checked />
+                  <span>Uso a resposta da máquina como ponto de partida e reviso cada trecho antes de assinar.</span>
+                </label>
+                <label class="checkbox-row">
+                  <input type="checkbox" class="autonomy-check" value="risk" />
+                  <span>Costumo enviar textos ou códigos gerados pela IA sem ler tudo com atenção.</span>
+                </label>
+                <label class="checkbox-row">
+                  <input type="checkbox" class="autonomy-check" value="risk" />
+                  <span>Tenho sentido dificuldade para começar um texto ou raciocínio sem abrir a IA primeiro.</span>
+                </label>
+              </div>
+
+              <div id="autonomy-result" class="info-callout"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEÇÃO 3: CONSULTAR PALAVRAS (AS 100 PALAVRAS DO LIVRO)
+         ====================================================================== -->
+    <section id="consultar-palavras" class="main-section" aria-labelledby="dict-heading">
+      <!-- Âncora de compatibilidade -->
+      <div id="secao-dicionario" class="anchor-alias" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Glossário interativo da Parte II</p>
+          <h2 id="dict-heading" class="section-title">Consultar palavras</h2>
+          <p class="section-desc">
+            Consulte as 100 palavras do livro por busca livre, por campo temático (1 a 9), pelas sete armadilhas ou em ordem alfabética. Clique em “Ler mais” em qualquer verbete para ver a explicação completa, o alerta de uso e o experimento relacionado.
+          </p>
+        </div>
+
+        <div class="dictionary-controls" role="search" aria-label="Busca e filtros das 100 palavras">
+          <div class="form-group">
+            <label for="busca-palavras" class="form-label">Buscar termo ou assunto:</label>
+            <input
+              type="search"
+              id="busca-palavras"
+              class="form-input"
+              placeholder="Ex.: alucinacao, token, rag, viés, lgpd..."
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="filter-field" class="form-label">Campo temático:</label>
+            <select id="filter-field" class="form-select">
+              <option value="all">Todos os 9 campos</option>
+              <option value="1">Campo 1 – Fundamentos e história</option>
+              <option value="2">Campo 2 – Como o modelo é feito por dentro</option>
+              <option value="3">Campo 3 – Como o modelo gera uma resposta</option>
+              <option value="4">Campo 4 – O que dá errado</option>
+              <option value="5">Campo 5 – Falar com o modelo: A arte do prompt</option>
+              <option value="6">Campo 6 – Ampliar e conectar o modelo</option>
+              <option value="7">Campo 7 – Modelos, produtos e infraestrutura</option>
+              <option value="8">Campo 8 – Ética, direito e sociedade</option>
+              <option value="9">Campo 9 – As palavras que chegaram ontem</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="filter-trap" class="form-label">Armadilha relacionada:</label>
+            <select id="filter-trap" class="form-select">
+              <option value="all">Todas as armadilhas</option>
+              <option value="1">1. Confundir fluência com verdade</option>
+              <option value="2">2. Achar que sabe tudo, e sabe agora</option>
+              <option value="3">3. Achar que ela é neutra</option>
+              <option value="4">4. Achar que concorda porque você tem razão</option>
+              <option value="5">5. Achar que a resposta é única</option>
+              <option value="6">6. Ser manipulado através dela</option>
+              <option value="7">7. Acreditar no exagero</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="sort-order" class="form-label">Ordenação:</label>
+            <select id="sort-order" class="form-select">
+              <option value="didatica">Ordem didática do livro (por campo)</option>
+              <option value="az">Ordem alfabética (A–Z)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="dictionary-toolbar">
+          <p id="dict-count-status" class="dictionary-count" aria-live="polite">
+            Exibindo 100 de 100 verbetes
+          </p>
+          <div class="dictionary-toolbar__actions">
+            <a href="#mapa-mental" class="btn btn--ghost btn--sm">
+              Explorar no mapa mental
+            </a>
+            <button type="button" id="btn-expand-all-words" class="btn btn--ghost btn--sm" aria-pressed="false">
+              Expandir todos os verbetes visíveis
+            </button>
+            <button type="button" id="btn-reset-dict" class="btn btn--secondary btn--sm">
+              Limpar filtros
+            </button>
+          </div>
+        </div>
+
+        <div id="dictionary-grid" class="words-grid">
+          <!-- Cartões renderizados via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEÇÃO 4: MAPA MENTAL PARA ESTUDO SOBRE INTELIGÊNCIA ARTIFICIAL
+         ====================================================================== -->
+    <section id="mapa-mental" class="main-section" aria-labelledby="mindmap-heading">
+      <div class="container">
+        <div class="section-header" style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:1rem;">
+          <div>
+            <p class="section-eyebrow">Estudo visual e trilhas temáticas · v13</p>
+            <h2 id="mindmap-heading" class="section-title">Mapa mental para estudo sobre Inteligência Artificial</h2>
+            <p class="section-desc">
+              Explore os conceitos em relação uns com os outros, filtre por abrangência (Essencial, Ampliado ou Completo), alterne o nível de linguagem (Objetivo, Aplicado ou Técnico) ou siga uma trilha guiada.
+            </p>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+            <button type="button" class="btn btn--secondary btn--sm" id="btnAjuda" title="Como funciona o painel">
+              ? Como funciona o mapa
+            </button>
+            <a href="mapa-mental.html" class="btn btn--ghost btn--sm">
+              Abrir em tela cheia
+            </a>
+          </div>
+        </div>
+
+        <div class="mm-intro-bar">
+          <p><b>Mapa.</b> Cada nó é um conceito e as linhas mostram as ligações. Clique para ler a definição acima do mapa.</p>
+          <p><b>Foco.</b> O clique traz o conceito ao centro com os relacionados. Arraste os nós; <b>Voltar</b> e <b>Limpar</b> refazem o caminho.</p>
+          <p><b>Trilhas.</b> Conduzem os conceitos em ordem temática, com as setas ou PageUp/PageDown. O resto está em <b>Como funciona o mapa</b>.</p>
+        </div>
+
+        <div class="mm-dashboard">
+          <aside class="mm-panel mm-side-panel" aria-label="Controles e filtros do mapa mental">
+            <div class="mm-nivel-box" style="--tc:var(--mm-violet)">
+              <div class="mm-nivel-titulo">Abrangência</div>
+              <div class="mm-nivel-btns" id="escopoBtns" role="group" aria-label="Abrangência de termos">
+                <button type="button" class="lvl active" data-e="e" aria-pressed="true">Essencial</button>
+                <button type="button" class="lvl" data-e="p" aria-pressed="false">Ampliado</button>
+                <button type="button" class="lvl" data-e="c" aria-pressed="false">Completo</button>
+              </div>
+            </div>
+
+            <div class="mm-nivel-box" style="--tc:var(--mm-gold)">
+              <div class="mm-nivel-titulo">Linguagem</div>
+              <div class="mm-nivel-btns" id="nivelBtns" role="group" aria-label="Nível de linguagem">
+                <button type="button" class="lvl active" data-n="b" aria-pressed="true">Objetivo</button>
+                <button type="button" class="lvl" data-n="m" aria-pressed="false">Aplicado</button>
+                <button type="button" class="lvl" data-n="a" aria-pressed="false">Técnico</button>
+              </div>
+            </div>
+
+            <div class="mm-nivel-box" style="--tc:var(--mm-cyan)">
+              <div class="mm-nivel-titulo">Trilhas de aprendizado</div>
+              <div class="mm-trilha-lista" id="trilhaLista"></div>
+            </div>
+
+            <div class="mm-search-wrap">
+              <label class="mm-search-label" for="searchTerm">Busca no mapa</label>
+              <input type="search" class="form-input" id="searchTerm" placeholder="Buscar termo no mapa..." autocomplete="off" />
+            </div>
+
+            <div class="mm-layers" id="layers"></div>
+          </aside>
+
+          <div class="mm-panel mm-map-panel">
+            <div class="mm-map-tools">
+              <div class="mm-map-tools__group">
+                <button type="button" class="flat" id="btnVoltar" disabled>&#8592; Voltar</button>
+                <button type="button" class="flat" id="btnLimparMapa" title="Volta à grade e apaga as marcas de visita">Limpar</button>
+              </div>
+              <span id="trilhaCtl" class="mm-map-tools__group" style="display:none">
+                <button type="button" class="flat" id="btnTrilhaAnt">‹ Anterior</button>
+                <span id="trilhaInfo" aria-live="polite"></span>
+                <button type="button" class="flat" id="btnTrilhaProx">Próximo ›</button>
+                <button type="button" class="flat" id="btnSairTrilha">Sair da trilha</button>
+              </span>
+            </div>
+
+            <div class="conceptBar" id="detail" aria-live="polite">
+              <div class="head"><h3>Selecione um conceito</h3><span class="en">mapa de estudo</span></div>
+              <div class="tabContent">Clique em qualquer nó do mapa para abrir aqui a definição completa do conceito, conforme o material de referência.</div>
+            </div>
+
+            <div class="neuralMap" id="neuralMap" role="region" aria-label="Grafo interativo de conceitos de Inteligência Artificial">
+              <svg id="links" aria-hidden="true"></svg>
+              <div class="hint">clique: foco no conceito · clique no central: visão geral</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="mm-credit">
+          Idealização e curadoria: <b>César Nogueira</b>. Código desenvolvido com apoio de IA. · v13 · agosto de 2026
+        </p>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CONTEÚDO COMPLEMENTAR: AS 7 MANEIRAS DE SER ENGANADO PELA IA
+         ====================================================================== -->
+    <section id="sete-armadilhas" class="main-section main-section--subtle" aria-labelledby="traps-heading">
+      <!-- Âncora de compatibilidade -->
+      <div id="secao-armadilhas" class="anchor-alias" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Guia de leitura rápida (Introdução do livro, p. 7–8)</p>
+          <h2 id="traps-heading" class="section-title">As 7 maneiras de ser enganado pela IA</h2>
+          <p class="section-desc">
+            Um modelo de linguagem não tem intenção de enganar ninguém: o engano acontece quando acreditamos que a máquina faz uma coisa quando, na verdade, faz outra. Selecione qualquer palavra-chave abaixo para consultar sua definição.
+          </p>
+        </div>
+
+        <div id="traps-container" class="traps-grid">
+          <!-- Preenchido via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEÇÃO 5: LINKS ÚTEIS (LIVROS, FERRAMENTAS E GUIAS)
+         ====================================================================== -->
+    <section id="links-uteis" class="main-section" aria-labelledby="links-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Biblioteca e referências externas</p>
+          <h2 id="links-heading" class="section-title">Links úteis: livros, ferramentas e guias</h2>
+          <p class="section-desc">
+            Seleção comentada de obras de referência, plataformas de inteligência artificial e documentos normativos para aprofundar o estudo e apoiar o uso responsável no dia a dia.
+          </p>
+        </div>
+
+        <div class="links-controls" role="search" aria-label="Filtrar e buscar links úteis">
+          <div class="form-group">
+            <label for="busca-links" class="form-label">Buscar por nome, autor ou assunto:</label>
+            <input
+              type="search"
+              id="busca-links"
+              class="form-input"
+              placeholder="Ex.: NotebookLM, LGPD, Transformer, execução local..."
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="form-group">
+            <span id="links-cat-label" class="form-label">Filtrar por categoria:</span>
+            <div id="links-category-pills" class="links-filter-pills" role="group" aria-labelledby="links-cat-label">
+              <button type="button" class="lvl active" data-link-cat="all" aria-pressed="true">Todos os itens</button>
+              <button type="button" class="lvl" data-link-cat="livros" aria-pressed="false">Livros e leituras</button>
+              <button type="button" class="lvl" data-link-cat="ferramentas" aria-pressed="false">Ferramentas de IA</button>
+              <button type="button" class="lvl" data-link-cat="guias" aria-pressed="false">Guias e legislação</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dictionary-toolbar">
+          <p id="links-count-status" class="dictionary-count" aria-live="polite">
+            Exibindo 12 itens
+          </p>
+          <div class="dictionary-toolbar__actions">
+            <button type="button" id="btn-reset-links" class="btn btn--secondary btn--sm">
+              Limpar busca e filtro
+            </button>
+          </div>
+        </div>
+
+        <div id="useful-links-grid" class="links-grid">
+          <!-- Renderizado via app.js a partir de data/links.js -->
+        </div>
+
+        <!-- Assistente de manutenção simples para adicionar novos links em data/links.js -->
+        <details class="links-maintainer">
+          <summary class="links-maintainer__summary">
+            <span>Como atualizar esta seção (Gerador de bloco para <code>data/links.js</code>)</span>
+            <span style="font-size:0.8rem; color:var(--text-muted);">Expandir / recolher</span>
+          </summary>
+          <div class="links-maintainer__body">
+            <p class="form-hint" style="margin-top:0; margin-bottom:1rem; font-size:0.9rem; color:var(--text-secondary);">
+              Todos os cartões desta seção são lidos automaticamente do arquivo <code>data/links.js</code>. Para adicionar um novo livro, ferramenta ou guia sem precisar escrever código manualmente, preencha os campos abaixo, copie o bloco gerado e cole dentro da lista <code>items: [ ... ]</code> em <code>data/links.js</code>.
+            </p>
+
+            <div class="tool-two-col">
+              <div class="control-box">
+                <div class="form-group">
+                  <label for="new-link-cat" class="form-label">1. Categoria:</label>
+                  <select id="new-link-cat" class="form-select">
+                    <option value="livros">Livros e leituras</option>
+                    <option value="ferramentas">Ferramentas de IA</option>
+                    <option value="guias">Guias e legislação</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="new-link-title" class="form-label">2. Título do livro, ferramenta ou guia:</label>
+                  <input type="text" id="new-link-title" class="form-input" placeholder="Ex.: Guia Prático de IA no Serviço Público" />
+                </div>
+
+                <div class="form-group">
+                  <label for="new-link-source" class="form-label">3. Autor(es), instituição ou desenvolvedor:</label>
+                  <input type="text" id="new-link-source" class="form-input" placeholder="Ex.: Escola Nacional de Administração Pública" />
+                </div>
+
+                <div class="form-group">
+                  <label for="new-link-url" class="form-label">4. Endereço (URL):</label>
+                  <input type="url" id="new-link-url" class="form-input" placeholder="Ex.: https://exemplo.gov.br/guia-ia" />
+                </div>
+
+                <div class="form-group">
+                  <label for="new-link-desc" class="form-label">5. Descrição curta:</label>
+                  <textarea id="new-link-desc" class="form-textarea form-textarea--short" placeholder="Explique em 1 ou 2 frases para que serve e por que vale a pena consultar."></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="new-link-caution" class="form-label">6. Cuidado prático ao usar (opcional):</label>
+                  <input type="text" id="new-link-caution" class="form-input" placeholder="Ex.: Verifique se a conta é institucional antes de anexar documentos." />
+                </div>
+
+                <div class="form-group">
+                  <label for="new-link-word" class="form-label">7. ID de verbete relacionado nas 100 palavras (opcional):</label>
+                  <input type="text" id="new-link-word" class="form-input" placeholder="Ex.: rag, llm, lgpd, alucinacao, prompt..." />
+                </div>
+              </div>
+
+              <div class="control-box">
+                <label for="new-link-snippet" class="form-label">Bloco pronto para colar em <code>data/links.js</code>:</label>
+                <textarea id="new-link-snippet" class="form-textarea form-textarea--tall" readonly></textarea>
+                <div class="form-actions">
+                  <button type="button" id="btn-copy-link-snippet" class="btn btn--primary">
+                    Copiar bloco para data/links.js
+                  </button>
+                </div>
+                <p id="new-link-copy-status" class="action-feedback" role="status" aria-live="polite"></p>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal de Ajuda do Mapa Mental -->
+  <div class="modalBg" id="ajudaBg" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="ajudaTit">
+      <div class="modalHead">
+        <h2 id="ajudaTit">Como funciona o painel<span>Perguntas frequentes sobre a navegação, os controles e o conteúdo</span></h2>
+        <button type="button" class="flat" id="btnFecharAjuda">Fechar &#10005;</button>
+      </div>
+      <div class="modalBody">
+        <div class="faqCols">
+          <details class="faq" open><summary>Para que serve este painel?</summary>
+          <p>Para estudar vocabulário de inteligência artificial vendo os conceitos em relação, e não em lista. Cada nó é um termo, cada linha é uma ligação declarada entre dois termos. O mesmo arquivo funciona como material de consulta individual e como apoio de exposição em sala.</p></details>
+
+          <details class="faq"><summary>Como leio a definição de um conceito?</summary>
+          <p>Clique no nó dentro do mapa ou no termo listado à esquerda. A definição abre no painel horizontal, acima do mapa. Os botões no rodapé desse painel levam diretamente aos conceitos vizinhos.</p></details>
+
+          <details class="faq"><summary>O que faz o menu <b>Abrangência</b>?</summary>
+          <p>Controla quantos conceitos ficam visíveis. <b>Essencial</b> mostra os quinze termos indispensáveis; <b>Ampliado</b> acrescenta um segundo bloco, e <b>Completo</b> exibe o vocabulário inteiro. Reduzir a abrangência não apaga nada: os termos ocultos voltam quando você amplia de novo.</p></details>
+
+          <details class="faq"><summary>O que faz o menu <b>Linguagem</b>?</summary>
+          <p>Troca o registro do texto exibido, sem trocar o conceito. <b>Objetivo</b> traz a formulação curta e direta; <b>Aplicado</b> traz o mesmo conteúdo com exemplos de uso e implicações de rotina; <b>Técnico</b> traz o verbete extenso, com autores, datas e ressalvas. Quando um termo não possui verbete técnico, o painel avisa e mostra a definição resumida.</p></details>
+
+          <details class="faq"><summary>Como funcionam as <b>trilhas de aprendizado</b>?</summary>
+          <p>Cada trilha percorre um conjunto de conceitos em ordem temática. Ao iniciar uma trilha, a abrangência passa automaticamente para <b>Completo</b>, porque a sequência pode incluir termos fora do recorte anterior. Ao sair, o recorte que você havia escolhido é restaurado.</p></details>
+
+          <details class="faq"><summary>Dá para usar o painel numa apresentação?</summary>
+          <p>Sim, e as trilhas foram feitas para isso. Com uma trilha ativa, as setas do teclado, as teclas PageUp e PageDown e os passadores de slides mais comuns avançam e retrocedem os conceitos. <b>Esc</b> encerra a trilha. Ao chegar ao último conceito, o avanço leva à trilha seguinte.</p></details>
+
+          <details class="faq"><summary>Posso mover os nós? A posição fica guardada?</summary>
+          <p>Arraste qualquer nó para onde quiser. A posição escolhida vale enquanto a página estiver aberta e tem prioridade sobre a grade automática. <b>Limpar</b> devolve tudo ao arranjo original, e recarregar a página também.</p></details>
+
+          <details class="faq"><summary>O que significam as cores?</summary>
+          <p>Cada camada temática tem uma cor, repetida no título da lista lateral e na borda dos nós. Fundamentos e Aplicações aparecem em ciano, Modelos em violeta, Arquitetura em verde, Uso em dourado, Riscos em rosa e Limitações em laranja.</p></details>
+
+          <details class="faq"><summary>O que é o visto verde nos nós e nos termos?</summary>
+          <p>Marca os conceitos já abertos nesta sessão, para você enxergar o que ainda não visitou. É um registro temporário: <b>Limpar</b> apaga as marcas, e recarregar a página também.</p></details>
+
+          <details class="faq"><summary>Para que servem as abas do painel de conceito?</summary>
+          <p><b>Definição</b> traz o texto no registro escolhido em Linguagem. <b>Risco na prática</b>, presente em parte dos termos, aponta o erro típico de quem usa aquele recurso sem conhecer seu limite. <b>Relações mais próximas</b> lista os conceitos ligados àquele.</p></details>
+
+          <details class="faq"><summary>A busca procura em quê?</summary>
+          <p>No nome em português, no termo em inglês e no texto da definição resumida, sempre dentro da abrangência ativa. Se um termo não aparecer, verifique se a abrangência está em Essencial ou Ampliado antes de concluir que ele não existe no mapa.</p></details>
+
+          <details class="faq"><summary>Por que alguns botões de relação aparecem apagados?</summary>
+          <p>Porque o conceito relacionado está fora da abrangência ativa. Passe para <b>Completo</b> e ele volta a ser clicável.</p></details>
+
+          <details class="faq"><summary>O que fazem <b>Voltar</b> e <b>Limpar</b>?</summary>
+          <p><b>Voltar</b> retoma o conceito aberto anteriormente, refazendo o caminho da leitura. <b>Limpar</b> retorna à visão geral, apaga as marcas de visita e desfaz as posições arrastadas.</p></details>
+
+          <details class="faq"><summary>Os dados saem do meu computador?</summary>
+          <p>O arquivo é uma página autônoma: todo o conteúdo está nele, e a página não faz nenhuma requisição de rede nem grava nada no navegador. Se você abrir o arquivo a partir do disco, nada trafega. Se ele estiver hospedado num endereço na internet, o servidor que o entrega registra o acesso ao arquivo, como faria com qualquer página, mas o que você faz depois dentro do painel continua sem sair da sua máquina. Como nada é gravado, o progresso se perde ao fechar a página.</p></details>
+        </div>
+        <p class="faqNota">O conteúdo dos verbetes acompanha o material de referência do curso e não substitui a consulta às fontes primárias. Datas, números e citações saídos de qualquer sistema de IA pedem conferência antes de entrar em documento oficial.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer id="rodape" class="site-footer" role="contentinfo" tabindex="-1">
+    <div class="container footer-grid">
+      <div>
+        <h2 class="footer-heading">O Que a Máquina Não Te Conta</h2>
+        <p class="footer-text">
+          <strong>100 palavras para usar inteligência artificial sem ser enganado por ela</strong> — Portal complementar (<code>llmfacil.com.br</code>).
+        </p>
+        <p class="footer-authors">
+          <strong>Autores do livro:</strong><br />
+          Annelise Torres da Costa • César da Cruz Nogueira • Luiz Fernando Rodrigues • Paulo Eduardo Charone Bitar Júnior
+        </p>
+      </div>
+
+      <div>
+        <h3 class="footer-subheading">Recursos de acessibilidade e privacidade</h3>
+        <p class="footer-text">
+          Esta página oferece atalhos de salto por teclado (<code>Alt+1</code> a <code>Alt+4</code>), ajuste de tamanho de texto, modo de alto contraste, opção para reduzir animações e navegação por teclado nas abas e cartões expansíveis. Nenhum texto digitado nas ferramentas é enviado a servidores externos.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="footer-subheading">Seções da página</h3>
+        <ul class="footer-links">
+          <li><a href="#topo">Voltar ao início</a></li>
+          <li><a href="#entender-ia">Entender a IA</a></li>
+          <li><a href="#usar-ferramentas">Usar ferramentas</a></li>
+          <li><a href="#consultar-palavras">Consultar palavras</a></li>
+          <li><a href="#mapa-mental">Mapa mental</a></li>
+          <li><a href="#sete-armadilhas">As 7 armadilhas</a></li>
+          <li><a href="#links-uteis">Links úteis</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Navegação inferior compacta para telas móveis -->
+  <nav class="mobile-bottom-nav" aria-label="Navegação rápida móvel">
+    <a href="#topo" class="mobile-nav-link is-active" data-nav-section="topo" aria-current="location">
+      Início
+    </a>
+    <a href="#entender-ia" class="mobile-nav-link" data-nav-section="entender-ia">
+      Entender a IA
+    </a>
+    <a href="#usar-ferramentas" class="mobile-nav-link" data-nav-section="usar-ferramentas">
+      Usar ferramentas
+    </a>
+    <a href="#consultar-palavras" class="mobile-nav-link" data-nav-section="consultar-palavras">
+      Consultar palavras
+    </a>
+  </nav>
+
+  <script src="data/words.js"></script>
+  <script src="data/links.js"></script>
+  <script src="app.js"></script>
+  <script src="data/mindmap.js"></script>
+</body>
+</html>
